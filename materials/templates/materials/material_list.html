@@ -1,0 +1,41 @@
+{% extends 'product/base.html' %}
+{% block content %}
+{% load my_tags %}
+
+<div class="text-center container">
+    <a class="btn btn-primary" href="{% url 'materials:create' %}" type="button">Создать</a>
+</div>
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="text-center container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+            {% for object in post_list %}
+
+            <div class="col">
+                <div class="card shadow-sm" style="height: 24rem;">
+                    <img src="{% mymedia_tag catalog.image %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ object.title|title }}</h5>
+                        <p class="card-text">{{ object.text|truncatechars:100 }}</p>
+                        <div>
+                           <a href="{% url 'materials:view' object.pk %}" type="button"
+                           class="btn btn-sm btn-outline-secondary">Смотреть</a>
+                            <a href="{% url 'materials:edit' object.pk %}" type="button"
+                           class="btn btn-sm btn-outline-secondary">Редактировать</a>
+                            <a href="{% url 'materials:delete' object.pk %}" type="button"
+                           class="btn btn-sm btn-outline-secondary">Удалить</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
