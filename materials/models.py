@@ -16,6 +16,6 @@ class Material(models.Model):
 
 
     class Meta:
-        verbose_name = 'Mатериал'
-        verbose_name_plural = 'Mатериалы'
+        verbose_name = 'Cтатья'
+        verbose_name_plural = 'Статьи'
 

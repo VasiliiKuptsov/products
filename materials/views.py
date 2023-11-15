@@ -11,7 +11,7 @@ class MaterialCreateView(CreateView):
     fields = ('title', 'body', 'image', 'publication')
     success_url = reverse_lazy('materials:materials')
     extra_context = {
-        'title': 'Create Material'
+        'title': 'Создать статью'
     }
 
     def form_valid(self, form):
@@ -27,7 +27,7 @@ class MaterialUpdateView(UpdateView):
     model = Material
     fields = ('title', 'body', 'image', 'publication')
     extra_context = {
-        'title': 'Update Material'
+        'title': 'Изменить статью'
     }
 
     def form_valid(self, form):
@@ -45,7 +45,7 @@ class MaterialUpdateView(UpdateView):
 class MaterialListView(ListView):
     model = Material
     extra_context = {
-        'title': 'Магериалы'
+        'title': 'Статья'
     }
 
     def get_queryset(self, *args, **kwargs):
@@ -70,7 +70,7 @@ class MaterialDeleteView(DeleteView):
     model = Material
     success_url = reverse_lazy('materials:materials')
     extra_context = {
-        'title': 'Delete Material'
+        'title': 'Удалить статью'
     }
 
 # Create your views here.
