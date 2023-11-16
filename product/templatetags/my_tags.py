@@ -11,6 +11,4 @@ def mymedia(val):
 
 @register.simple_tag
 def mymedia_tag(val):
-    if val:
-        return f'/media/{val}'
-    return '#'
+    return f'/media/{val}'

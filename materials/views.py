@@ -16,9 +16,9 @@ class MaterialCreateView(CreateView):
 
     def form_valid(self, form):
         if form.is_valid():
-            new_mat = form.save()
-            new_mat.slug = slugify(new_mat.title)
-            new_mat.save()
+            new_materials = form.save()
+            new_materials.slug = slugify(new_materials.title)
+            new_materials.save()
 
         return super().form_valid(form)
 
@@ -32,9 +32,9 @@ class MaterialUpdateView(UpdateView):
 
     def form_valid(self, form):
         if form.is_valid():
-            new_mat = form.save()
-            new_mat.slug = slugify(new_mat.title)
-            new_mat.save()
+            new_materials = form.save()
+            new_materials.slug = slugify(new_materials.title)
+            new_materials.save()
 
         return super().form_valid(form)
 
@@ -45,7 +45,7 @@ class MaterialUpdateView(UpdateView):
 class MaterialListView(ListView):
     model = Material
     extra_context = {
-        'title': 'Статья'
+        'title': 'Статьи'
     }
 
     def get_queryset(self, *args, **kwargs):
@@ -56,6 +56,8 @@ class MaterialListView(ListView):
 
 class MaterialDetailView(DetailView):
     model = Material
+
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -10,11 +10,12 @@
     <div class="text-center container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
-            {% for object in post_list %}
+            {% for object in object_list %}
 
             <div class="col">
-                <div class="card shadow-sm" style="height: 24rem;">
-                    <img src="{% mymedia_tag catalog.image %}" class="card-img-top" alt="...">
+                <div class="card shadow-sm" style="height: 24">
+                    <img src="{{object.image|mymedia}}" class="card-img-top" alt="Card image cap">
+
                     <div class="card-body">
                         <h5 class="card-title">{{ object.title|title }}</h5>
                         <p class="card-text">{{ object.text|truncatechars:100 }}</p>
