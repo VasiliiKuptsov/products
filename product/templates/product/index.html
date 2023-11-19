@@ -1,6 +1,9 @@
 {% extends 'product/base.html' %}
 
 {% block content %}
+<div class="text-center container">
+    <a class="btn btn-primary" href="{% url 'product:create' %}" type="button">Create Product</a>
+</div>
   <div class="row">
       {% for object in object_list %}
         {% include 'product/includes/inc_category.html' %}

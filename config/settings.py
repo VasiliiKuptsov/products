@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 #DATABASE_DATA = db_config(filename=Path(BASE_DIR, 'database.ini'))
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'products',
         'USER': 'postgres',
         'PORT': '5433',

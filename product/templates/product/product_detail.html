@@ -1,0 +1,31 @@
+{% extends 'product/base.html' %}
+{% block content %}
+{% load my_tags %}
+
+<div class="text-center container">
+    <div class="card mb-3">
+        <div class="col">
+            <div class="card shadow-sm">
+                <img src="{{object.image|mymedia}}"  class="card-img-top col-5" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name|title }}</h5>
+
+                    <h6 class="card-subtitle mb-3 text-body-secondary">Категория: {{ product.category|title }}</h6>
+                    <p class="card-text mb-3">Описание: {{ product.description }}</p>
+
+                    <h5 class="card-title mb-3">Цена: {{ product.purchase_price }}</h5>
+                    <a href="{% url 'product:index' %}" type="button"
+                       class="btn btn-sm btn-outline-secondary mb-3">Вернуться к продуктам</a>
+                    <div class="row">
+                        <a>
+                            <small class="text-body-secondary">Создано в {{ product.date_of_creation }}</small>
+                            <small class="text-body-secondary">Последнее обновление {{ product.date_of_last_modification }}</small>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
