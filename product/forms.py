@@ -28,7 +28,7 @@ class ProductForm(StyleFormMixin, forms.ModelForm):
             if item in name.lower():
                 raise forms.ValidationError(f'Слово "{item}" запрещено к использованию, выберите другоe')
 
-        return cleaned_data
+        return name #cleaned_data
 
     def clean_description(self):
         stop_list = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар']
@@ -42,7 +42,7 @@ class ProductForm(StyleFormMixin, forms.ModelForm):
             if item in description.lower():
                 raise forms.ValidationError(f'Слово "{item}" запрещено к использованию, выберите другое')
 
-        return cleaned_data
+        return description  #cleaned_data
 
 
 class VersionForm(StyleFormMixin, forms.ModelForm):
