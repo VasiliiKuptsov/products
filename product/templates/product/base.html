@@ -27,6 +27,12 @@
                 <li><a href="{% url 'product:index' %}" class="text-white">ГЛАВНАЯ</a></li>
                 <li><a href="{% url 'product:contacts' %}" class="text-white">Контакты</a></li>
                 <li><a href="{% url 'materials:materials' %}" class="text-white">СТАТЬИ</a></li>
+                {% if user.is_authenticated%}
+                  <li><a href="{% url 'users:login' %}" class="text-white">Выйти</a></li>
+                {% else %}
+
+                  <li><a href="{% url 'users:login' %}" class="text-white">Войти</a></li>
+                {% endif %}
               </ul>
             </div>
           </div>
