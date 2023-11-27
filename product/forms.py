@@ -15,8 +15,8 @@ class StyleFormMixin:
 class ProductForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Product
-        fields = ('name', 'description', 'image', 'category', 'purchase_price')
-
+        #fields = ('name', 'description', 'image', 'category', 'purchase_price', 'user')
+        exclude = ('user',)
     def clean_name(self):
         stop_list = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар']
 

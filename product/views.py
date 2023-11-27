@@ -6,6 +6,8 @@ from product.models import Product, Category, Version
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from product.forms import ProductForm, VersionForm
 from pytils.translit import slugify
+#from product.servicese.servicese_category import get_categories
+from django.conf import settings
 # Create your views here.
 
 class ContactsPageView(View):
@@ -50,10 +52,15 @@ class ProductListView(ListView):
     extra_context = {
         'title': 'Продукты'
     }
-    def get_queryset(self, *args, **kwargs):
-        queryset = super().get_queryset(*args, **kwargs)
-        queryset = queryset.filter(publication=True)
-        return queryset
+   # def get_queryset(self, *args, **kwargs):
+    #    queryset = super().get_queryset(*args, **kwargs)
+     #   queryset = queryset.filter(publication=True)
+      #  return queryset
+
+    def get_queryset(self):
+        if not self.request.user.is_anonymous:
+            return Product.objects.filter(user=self.request.user)
+        return Product.objects.all()
 
     def get_context_data(self, *args, **kwargs):
 
@@ -88,10 +95,12 @@ class ProductCreateView(CreateView):
     }
 
     def form_valid(self, form):
-        new_product = form.save()
-        new_product.slug = slugify(new_product.name)
-        new_product.save()
+        #new_product = form.save()
         self.object = form.save()
+        self.object.user = self.request.user
+        #new_product.slug = slugify(new_product.name)
+        #new_product.save()
+        self.object.save() #self.object = form.save()
         return super().form_valid(form)
 
 
@@ -101,7 +110,7 @@ class ProductUpdateView(UpdateView):
     extra_context = {
         'title': 'Изменить продукт'
     }
-
+    #success_url = reverse_lazy('product:index')#
     def get_form_class(self):
         return super().get_form_class()
 
@@ -123,11 +132,16 @@ class ProductUpdateView(UpdateView):
         self.object.save()
         formset = self.get_context_data()['formset']
         self.object = form.save()
+        #self.object.user = self.request.user#
+        #self.object.save()#
         if formset.is_valid():
             formset.instance = self.object
             formset.save()
 
         return super().form_valid(form)
+
+
+
 
     def get_success_url(self):
         return reverse('product:view', args=[self.object.pk])

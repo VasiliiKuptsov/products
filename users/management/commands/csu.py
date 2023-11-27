@@ -3,7 +3,7 @@ from users.models import User
 
 class Command(BaseCommand):
 
-    def handle(selfself, *args, **opotions):
+    def handle(self, *args, **opotions):
         user = User.objects.create(
             email = 'admin@sky.pro',
             first_name = 'Admin',

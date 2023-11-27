@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
+from django.conf import settings
 
 from datetime import datetime
 # Create your models here.
@@ -35,10 +35,10 @@ class Product (models.Model):
     publication = models.BooleanField(default=True, verbose_name='Опубликовано')
     date_of_creation = models.DateField(**NULLABLE, verbose_name='дата создания')
     date_of_last_modification = models.DateField(**NULLABLE, verbose_name='дата последнего изменения')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, **NULLABLE, verbose_name='user')
 
     def __str__(self):
         return  f'{self.name}({self.category}){self.purchase_price}'
-
 
     class Meta:
 
