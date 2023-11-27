@@ -6,6 +6,7 @@ from product.models import Product, Category, Version
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from product.forms import ProductForm, VersionForm
 from pytils.translit import slugify
+from django.contrib.auth.mixins import LoginRequiredMixin
 #from product.servicese.servicese_category import get_categories
 from django.conf import settings
 # Create your views here.
@@ -46,7 +47,7 @@ class CategoryListView(ListView):
  #       context = super().get_context_data(**kwargs)
   #      return context
 
-class ProductListView(ListView):
+class ProductListView(LoginRequiredMixin, ListView):
     model = Product
     template_name = 'product/index.html'
     extra_context = {
@@ -86,7 +87,7 @@ class ProductListView(ListView):
 #    }
 #    return render(request, 'product/product.html', context)  # i i
 # Create your views here.
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('product:index')
@@ -104,7 +105,7 @@ class ProductCreateView(CreateView):
         return super().form_valid(form)
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     extra_context = {

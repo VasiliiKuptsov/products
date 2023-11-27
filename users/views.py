@@ -10,8 +10,9 @@ from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-#class LoginView(BaseLoginView):
+#class .LoginView(Bas.eLoginView):
 #    template_name = 'users/login.html'
 
 
@@ -35,7 +36,7 @@ class RegisterView(CreateView):
         return super().form_valid(form)
 
 
-class UserUpdateView(UpdateView):
+class UserUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     success_url = reverse_lazy('product:index')
    # template_name = 'users/user_form.html'
