@@ -164,4 +164,3 @@ class ProductDeleteView(DeleteView):
     extra_context = {
         'title': 'Удаление продукта'
     }
-

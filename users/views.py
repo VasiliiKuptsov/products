@@ -22,7 +22,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class RegisterView(CreateView):
     model = User
     form_class = UserRegisterForm
-    template_name = 'users/register.html'
+    template_name = 'users/user_register.html'
     success_url = reverse_lazy('users:login')
 
     def form_valid(self, form):
@@ -39,7 +39,7 @@ class RegisterView(CreateView):
 class UserUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     success_url = reverse_lazy('product:index')
-   # template_name = 'users/user_form.html'
+    template_name = 'users/use_form.html'
     form_class = UserForm
 
     def get_object(self, queryset=None):
@@ -60,6 +60,3 @@ def generate_new_password(request):
 
 
 # Create your views here.
-
-
-

@@ -144,12 +144,12 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL= '/users/'
 
-MAIL_HOST = os.getenv('EMAIL_HOST')
-EMAIL_PORT = 25
+EMAIL_HOST = 'smtp.mail.ru' # os.getenv('EMAIL_HOST')
+EMAIL_PORT = 2525
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = "kuptsovy@mail.ru" #os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = "7usQ6vRxfBnDuHjBGXbs" #os.getenv('EMAIL_HOST_PASSWORD')
 
 CACHE_ENABLED = os.getenv('CACHE_ENABLED') =='True'
 
