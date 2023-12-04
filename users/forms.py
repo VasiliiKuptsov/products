@@ -13,7 +13,7 @@ class UserForm(StyleFormMixin, UserChangeForm):
 
     class Meta:
         model = User
-        fields = ('email', 'password', 'phone', 'avatar', 'country')
+        fields = ('email', 'phone', 'avatar', 'country')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

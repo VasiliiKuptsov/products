@@ -148,8 +148,8 @@ EMAIL_HOST = 'smtp.mail.ru' # os.getenv('EMAIL_HOST')
 EMAIL_PORT = 2525
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-EMAIL_HOST_USER = "kuptsovy@mail.ru" #os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = "7usQ6vRxfBnDuHjBGXbs" #os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = "kuptsovy@mail.ru"#os.getenv('EMAIL_HOST_USER')#"kuptsovy@mail.ru"
+EMAIL_HOST_PASSWORD = "7usQ6vRxfBnDuHjBGXbs"#os.getenv('EMAIL_HOST_PASSWORD')#"7usQ6vRxfBnDuHjBGXbs"
 
 CACHE_ENABLED = os.getenv('CACHE_ENABLED') =='True'
 

@@ -13,5 +13,5 @@ class Command(BaseCommand):
 
         )
 
-        user.set_password('v1705vVAS!')
+        user.set_password('123456')
         user.save()
